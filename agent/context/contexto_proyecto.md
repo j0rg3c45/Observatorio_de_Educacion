@@ -1,80 +1,83 @@
-# Contexto del Proyecto - Indice de Ingresos Operacionales
+# Contexto del Proyecto - Observatorio de Educacion
 
 ## Repositorio
 
-- URL: https://github.com/j0rg3c45/Indice_ingresos_operacionales.git
+- URL: https://github.com/j0rg3c45/Observatorio_de_Educacion.git
 - Rama: main
 - Equipo: ITT Cali Inteligente - Gobierno de Datos
 
 ## Objetivo del proyecto
 
-Construir un indice de ingresos operacionales a partir del Registro Mercantil 2025 de Cali,
-que permita medir y comparar la actividad economica por territorio (comunas, barrios)
-y hacer seguimiento en el tiempo como insumo para el Indice de Transformacion Territorial (ITT).
+Construir un Observatorio de Educacion territorial a partir de datos de la Secretaria
+de Educacion Municipal (SED) de Cali, que permita medir y comparar las condiciones
+del servicio educativo por sede, institucion y comuna, y hacer seguimiento en el tiempo
+como insumo para el Indice de Transformacion Territorial (ITT).
 
 ## Relacion con el ITT
 
-Este proyecto alimenta la **dimension economica** del ITT. Los indicadores derivados son:
-- Densidad empresarial por comuna
-- Ingresos promedio/mediana por zona
-- Tasa de microempresas
-- Empleo promedio por empresa
-- Concentracion de empleo formal
-- Indice de diversidad economica (CIIU)
-- Tasa de nuevas matriculas (dinamismo)
+Este proyecto alimenta la **dimension de Educacion y Desarrollo** del ITT.
+Los indicadores derivados son:
+- Matricula escolar por zona de intervencion
+- Tasa de desercion por zona
+- Tasa de repitencia por zona
+- Ratio estudiantes por docente por zona
+- Cobertura educativa (bruta y neta)
+
+## Indice propio: ICET
+
+El proyecto construye el Indice de Calidad Educativa Territorial (ICET) con 5 dimensiones:
+- Cobertura y Acceso (30%)
+- Eficiencia Interna (25%)
+- Recursos Pedagogicos (20%)
+- Infraestructura (15%)
+- Dotacion Tecnologica (10%)
 
 ## Datos disponibles
 
-### Registro Mercantil 2025
-- Archivo: `data/Registro mercantil 2025_.xlsx`
-- Registros: 122,535
-- Columnas: 17
-- Ciudad: Cali (100%)
-- Periodo: Matriculas historicas con renovacion a marzo 2025
+### Matricula 2026
+- Archivo: `data/Fuentes de datos/Reporte de matricula/01_Matricula_2026.xlsx`
+- Periodo: Corte 2026
 
-### GeoJSON de comunas
-- Archivo: `data/info_geo/geojson_comunas/Comunas.geojson`
-- Poligonos: 22 comunas urbanas de Cali
-- CRS: EPSG:4326
-- Columnas: comuna (int), nombre, area, geometry
+### Indicadores de eficiencia y cobertura 2026
+- Archivo: `data/Fuentes de datos/Indicadores de eficiencia y de cobertura/02_Indicadores_2026.xlsx`
+- Periodo: Corte 2026
 
-## Estado actual de implementacion
+### Estudiantes por docente y equipo 2026
+- Archivo: `data/Fuentes de datos/Indicadores de docentes y equipos de computo/03_Estudiantes_por_docente_y_equipo_2026.xlsx`
+- Periodo: Corte 2026
 
-| Componente | Estado | Archivo |
-|-----------|--------|---------|
-| Analisis exploratorio | Completo | notebooks_py/01_analisis_exploratorio.py |
-| Carga datos + mapas | Completo | notebooks_py/02_carga_datos_mapa.ipynb |
-| Indicadores por comuna | Completo | Calculados en notebook 02 |
-| Cruce con GeoJSON | Completo | 22 comunas mapeadas |
-| Mapas coropleticos | Completo | Estaticos (PNG) + interactivo (HTML) |
-| Reporte EDA | Completo | outputs/reporte_analisis_exploratorio.txt |
-| Reporte consolidado | Completo | outputs/consolidado.txt |
-| Indicadores territorio | Propuesta | outputs/indicadores_territorio_cali.txt |
-| Indice compuesto | Pendiente | Por definir formula y ponderaciones |
-| Seguimiento temporal | Pendiente | Requiere datos de multiples periodos |
+### Informacion geografica de sedes
+- Archivo: `data/Fuentes de datos/Informacion geografica sedes.xlsx`
+- Contenido: Coordenadas y ubicacion de sedes educativas oficiales
 
-## Hallazgos clave del dataset
+### Inventario de equipos de computo
+- Archivo: `data/Fuentes de datos/REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO SEDES EDUCATIVAS.xlsx`
+- Contenido: Inventario detallado de equipos por sede
 
-- 95.1% son microempresas
-- 58.7% son persona natural
-- 14.6% no reportan ingresos (nulos)
-- 51.7% reportan ingresos = $0
-- Top comunas: Comuna 02 (11.4%), Comuna 17 (10.8%), Comuna 03 (9.0%)
-- Top sector: Comercio al por mayor y menor (35.3%)
-- Ingreso promedio: $1,148M (sesgado por grandes empresas)
-- Ingreso mediana: $0 (mayoria sin ingresos reportados)
+### Intervenciones de infraestructura
+- Archivos:
+  - `data/Fuentes de datos/Intervenciones de infraestructura/22 SEDES.xlsx`
+  - `data/Fuentes de datos/Intervenciones de infraestructura/49 sedes Emprestito - Valores 2026 y 2027.xlsx`
+  - `data/Fuentes de datos/Intervenciones de infraestructura/HISTORICO OBRAS 2020-2025.xlsx`
+- Contenido: Obras ejecutadas, inversiones programadas, historico
 
 ## Entorno de ejecucion
 
 - Local: Windows, uv + conda disponibles
-- Colab: Notebook 02 detecta automaticamente y clona el repo
 - Python: 3.12
 - Dependencias: pandas, openpyxl, numpy, matplotlib, seaborn, geopandas, folium
 
 ## Reglas del agente
 
-1. Cada cambio debe desencadenar actualizacion de contextos, .md y reportes
-2. Cada cambio debe hacer commit + push automaticamente
-3. Sin emojis en codigo
-4. Formato abreviado en ejes (1K, 1M, 1B)
-5. Reportes en texto plano (.txt) en outputs/
+1. SIEMPRE analizamos los datos entregados: cantidad de nulos, vacios, repetidos y unicos.
+2. No inventes datos.
+3. Si un resultado no esta disponible, indicalo claramente.
+4. Diferencia entre datos reales, datos provisionales y scores de referencia.
+5. Despues de cada cambio realizado en el proyecto, SIEMPRE hacer commit y push:
+   - git add .
+   - git commit -m "descripcion breve del cambio"
+   - git push
+6. Cada cambio DEBE desencadenar la actualizacion de archivos .md y .txt relacionados.
+7. Sin emojis en codigo.
+8. Formato abreviado en ejes (1K, 1M, 1B).
+9. Reportes en texto plano (.txt) en outputs/.
