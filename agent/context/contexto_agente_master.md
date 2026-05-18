@@ -66,6 +66,22 @@ Estado:
 - Genera scatter plots de relaciones clave.
 - Evalua viabilidad del ICET por comuna.
 
+### Notebook 03 - Dimension Educacion y Desarrollo para el ITT
+
+- `notebooks/03_dimension_educacion_itt.ipynb`
+
+Estado:
+
+- Creado y funcional.
+- Calcula el score de la dimension Educacion y Desarrollo del ITT por comuna.
+- Usa 4 indicadores: matricula, repitencia, est/docente, est/equipo.
+- Normaliza con ref_min/ref_max fijos.
+- Genera score por comuna en escala 0-100.
+- Clasifica comunas en 4 niveles (Critico, En desarrollo, Adecuado, Optimo).
+- Genera graficos: barras de score, contribucion por indicador (stacked), ranking.
+- Exporta tabla final con scores y clasificacion.
+- Reemplaza el referente provisional de Pulmon de Oriente (54.9) con datos reales 2026.
+
 Hallazgos clave del notebook 02:
 
 - Matricula total urbana 2026: 304,291 estudiantes en 22 comunas.
@@ -115,6 +131,7 @@ Para responder bien sobre este repo, un agente debe leer en este orden:
 4. `agent/context/glosario.md`
 5. `notebooks/01_carga_y_analisis_datos.ipynb`
 6. `notebooks/02_analisis_espacial_correlacion.ipynb`
+7. `notebooks/03_dimension_educacion_itt.ipynb`
 
 ## 8. Precauciones para otro agente
 
@@ -133,7 +150,7 @@ Para responder bien sobre este repo, un agente debe leer en este orden:
 
 ## 10. Resumen ejecutivo para handoff rapido
 
-Este repo construye el Observatorio de Educacion de Cali. La metodologia usa `ref_min/ref_max` fijos y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook 01 carga y analiza las 8 fuentes de datos de la SED. El notebook 02 cruza datos por comuna, calcula correlaciones y evalua la viabilidad del ICET. Hallazgo principal: 3 de 5 dimensiones del ICET son calculables hoy por comuna (Cobertura, Recursos, Dotacion). Eficiencia solo esta a nivel municipal y requiere desglose. Todas las fuentes estan en `data/Fuentes de datos/`. El indice ICET tiene 5 dimensiones: Cobertura (30%), Eficiencia (25%), Recursos (20%), Infraestructura (15%) y Dotacion (10%).
+Este repo construye el Observatorio de Educacion de Cali. La metodologia usa `ref_min/ref_max` fijos y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook 01 carga y analiza las 8 fuentes de datos. El notebook 02 cruza datos por comuna y evalua viabilidad del ICET. El notebook 03 calcula el score de la dimension Educacion del ITT por comuna usando 4 indicadores (matricula, repitencia, est/docente, est/equipo) con refs fijos. Este score reemplaza el referente provisional de Pulmon de Oriente (54.9). Hallazgo: 3 de 5 dimensiones del ICET son calculables hoy por comuna.
 
 ## 11. Prompt sugerido para otro agente
 
