@@ -1,0 +1,148 @@
+======================================================================
+REPORTE DE DIFERENCIAS: DATA HISTORICA (2020-2025) vs DATA 2026
+======================================================================
+Fecha: Mayo 2026
+Proyecto: Observatorio de Educacion - Santiago de Cali
+======================================================================
+
+NOTA IMPORTANTE:
+La data historica y la data 2026 NO son directamente comparables.
+Son fuentes distintas, con estructuras distintas y propositos distintos.
+Este reporte documenta las diferencias para evitar interpretaciones
+incorrectas al cruzar ambas fuentes.
+
+======================================================================
+1. ESTRUCTURA DE LAS FUENTES
+======================================================================
+
+DATA HISTORICA (2020-2025):
+- Archivo: HISTORICO OBRAS 2020-2025.xlsx
+- Registros: 455 (obras ejecutadas)
+- Unidad de registro: UNA OBRA (no una sede ni un estudiante)
+- Columna temporal: "Ano" (2020, 2021, 2022, 2023, 2024, 2025)
+- Una sede puede aparecer MULTIPLES VECES (una por cada obra)
+- El campo "Estudiantes" es la matricula de la sede AL MOMENTO de la obra
+- NO es un censo de matricula, es un registro de intervenciones
+
+DATA 2026 (T1):
+- Archivos: 01_Matricula_2026, 02_Indicadores_2026, 03_Estudiantes_2026
+- Unidad de registro: SEDE (en archivo 03) o COMUNA (en archivo 01)
+- Columna temporal: NINGUNA (es un corte unico, Marzo 2026)
+- Cada sede aparece UNA SOLA VEZ
+- Es un censo completo de matricula oficial
+
+======================================================================
+2. DIFERENCIAS CLAVE
+======================================================================
+
+| Aspecto              | Historico (2020-2025)         | Data 2026                    |
+|----------------------|-------------------------------|------------------------------|
+| Proposito            | Registrar obras ejecutadas    | Medir estado actual          |
+| Unidad de registro   | Obra                          | Sede o comuna                |
+| Temporalidad         | 6 anos (columna Ano)          | Corte unico (sin columna)    |
+| Cobertura            | Solo sedes intervenidas       | Todas las sedes oficiales    |
+| Sedes cubiertas      | 233 sedes (parcial)           | 337 sedes (completo)         |
+| Duplicados           | SI (1 sede = N obras)         | NO (1 sede = 1 registro)     |
+| Matricula            | Al momento de la obra         | SIMAT Marzo 2026             |
+| Equipos computo      | NO disponible                 | SI (por sede)                |
+| Docentes             | NO disponible                 | SI (nivel municipal)         |
+| Inversion            | SI (por obra)                 | NO aplica                    |
+| Tipo de intervencion | SI (descripcion de obra)      | NO aplica                    |
+| Desglose por nivel   | NO                            | SI (preescolar a media)      |
+| Sector no oficial    | NO                            | SI                           |
+
+======================================================================
+3. QUE SE PUEDE Y QUE NO SE PUEDE COMPARAR
+======================================================================
+
+SE PUEDE COMPARAR (con precauciones):
+----------------------------------------------------------------------
+- Estudiantes por sede: El historico tiene "Estudiantes" por sede al
+  momento de la obra. El 2026 tiene "matricula" por sede. Se pueden
+  comparar LAS MISMAS SEDES para ver si ganaron o perdieron estudiantes.
+  PRECAUCION: Deduplicar el historico (tomar ultimo dato por sede).
+
+- Obras por comuna vs condiciones actuales: Correlacionar la cantidad
+  de obras historicas con el ratio est/equipo actual. Permite evaluar
+  si la inversion se tradujo en mejores condiciones.
+
+- Cobertura de intervenciones: Comparar sedes intervenidas (historico)
+  vs sedes totales (2026) para calcular % de cobertura.
+
+NO SE PUEDE COMPARAR DIRECTAMENTE:
+----------------------------------------------------------------------
+- Matricula total por comuna (historico) vs matricula total (2026):
+  El historico solo tiene estudiantes de sedes intervenidas, no de
+  todas las sedes. No es un dato de matricula total.
+
+- Evolucion temporal de matricula: No existe un archivo de matricula
+  para 2023, 2024 o 2025. Solo tenemos 2026. El historico NO es
+  matricula, es registro de obras.
+
+- Equipos de computo: No hay dato historico de equipos. Solo 2026.
+
+- Repitencia/desercion por comuna: No hay dato historico ni actual
+  desagregado por comuna. Solo nivel municipal 2026.
+
+======================================================================
+4. ERRORES COMUNES A EVITAR
+======================================================================
+
+ERROR 1: Sumar "Estudiantes" del historico como si fuera matricula total
+- El historico tiene la misma sede repetida N veces (una por obra).
+- Sumar sin deduplicar infla el numero artificialmente.
+- SOLUCION: Agrupar por sede, tomar el ultimo valor.
+
+ERROR 2: Comparar totales del historico con totales 2026
+- Historico: 233 sedes parciales -> suma ~230,000 (con duplicados)
+- 2026: 337 sedes completas -> suma 143,747 (oficial)
+- Son poblaciones DISTINTAS. No son comparables en total.
+
+ERROR 3: Asumir que el campo "Estudiantes" del historico es actual
+- Es el dato AL MOMENTO DE LA OBRA (puede ser de 2020, 2021, etc.)
+- No refleja la matricula actual de esa sede.
+
+ERROR 4: Graficar "evolucion de matricula 2020-2026" con estos datos
+- 2020-2025: Solo sedes intervenidas ese ano (parcial, variable)
+- 2026: Todas las sedes (completo)
+- El grafico mostraria un "salto" que no es real, es cambio de fuente.
+
+======================================================================
+5. COMO USAR AMBAS FUENTES CORRECTAMENTE
+======================================================================
+
+USO CORRECTO 1: Linea base de infraestructura
+- Historico: Cuantas obras, cuanta inversion, cuantas sedes por comuna
+- 2026: Estado actual de esas sedes (matricula, equipos)
+- Pregunta valida: "Las comunas mas intervenidas tienen mejor dotacion?"
+
+USO CORRECTO 2: Comparacion por sede (mismas sedes)
+- Filtrar sedes que aparecen en AMBAS fuentes
+- Historico: Ultimo dato de estudiantes (deduplicado)
+- 2026: Matricula actual
+- Pregunta valida: "La sede gano o perdio estudiantes desde la obra?"
+
+USO CORRECTO 3: Cobertura de intervenciones
+- Historico: Sedes unicas intervenidas por comuna
+- 2026: Total sedes por comuna
+- Calculo: % sedes intervenidas = sedes_intervenidas / sedes_total * 100
+- Pregunta valida: "Que % de sedes ya fueron atendidas?"
+
+USO CORRECTO 4: Inversion per capita
+- Historico: Inversion acumulada por comuna
+- 2026: Matricula total por comuna
+- Calculo: inversion_por_estudiante = inversion / matricula_total
+- Pregunta valida: "Cuanto se ha invertido por estudiante en cada comuna?"
+
+======================================================================
+6. RESUMEN PARA EL CONTEXTO DEL AGENTE
+======================================================================
+
+- La data historica (2020-2025) es un REGISTRO DE OBRAS, no un censo.
+- La data 2026 es un CORTE UNICO de estado actual (SIMAT Marzo 2026).
+- No tienen columnas en comun excepto nombre de sede y comuna.
+- El cruce se hace por nombre de sede (normalizado) o por comuna.
+- Siempre deduplicar el historico antes de comparar.
+- Los graficos de "evolucion" deben aclarar que 2020-2025 es parcial.
+- El unico dato temporal real es el campo "Ano" del historico de obras.
+- La data 2026 NO tiene campo de fecha, periodo ni trimestre.
