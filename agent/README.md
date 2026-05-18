@@ -14,6 +14,8 @@
 ## Entorno de ejecucion
 
 - Local: Windows, uv + conda disponibles, ejecutar directamente con `uv run` o `python`
+- uv esta instalado y disponible en PATH para ejecutar scripts directamente
+- Ejemplo: `uv run scripts/generar_geojson_educacion.py`
 
 ## Dependencias instaladas
 

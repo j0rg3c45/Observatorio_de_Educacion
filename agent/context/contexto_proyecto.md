@@ -76,6 +76,7 @@ El proyecto construye el Indice de Calidad Educativa Territorial (ICET) con 5 di
 ## Entorno de ejecucion
 
 - Local: Windows, uv + conda disponibles
+- Ejecutar scripts con: `uv run scripts/nombre_script.py` o `python scripts/nombre_script.py`
 - Python: 3.12
 - Dependencias: pandas, openpyxl, numpy, matplotlib, seaborn, geopandas, folium
 
