@@ -1,0 +1,102 @@
+======================================================================
+RESUMEN GENERAL DE FUENTES DE DATOS - OBSERVATORIO DE EDUCACION
+======================================================================
+Fecha de generacion: Mayo 2026
+Proyecto: Observatorio de Educacion - Santiago de Cali
+Equipo: ITT Cali Inteligente - Gobierno de Datos
+======================================================================
+
+----------------------------------------------------------------------
+1. REPORTE DE MATRICULA 2026
+----------------------------------------------------------------------
+Archivo: data/Fuentes de datos/Reporte de matricula/01_Matricula_2026.xlsx
+Dimension ICET: Cobertura y Acceso (30%)
+Periodicidad: Anual (corte 2026)
+Contenido: Matricula por sede educativa, nivel, grado y jornada.
+Uso principal: Calcular tasas de cobertura bruta y neta por sede/comuna.
+
+----------------------------------------------------------------------
+2. INDICADORES DE EFICIENCIA Y COBERTURA 2026
+----------------------------------------------------------------------
+Archivo: data/Fuentes de datos/Indicadores de eficiencia y de cobertura/02_Indicadores_2026.xlsx
+Dimension ICET: Eficiencia Interna (25%) + Cobertura y Acceso (30%)
+Periodicidad: Anual (corte 2026)
+Contenido: Tasas de desercion, repitencia, aprobacion, reprobacion y cobertura.
+Uso principal: Medir eficiencia del sistema educativo por sede/IE.
+
+----------------------------------------------------------------------
+3. ESTUDIANTES POR DOCENTE Y EQUIPO DE COMPUTO 2026
+----------------------------------------------------------------------
+Archivo: data/Fuentes de datos/Indicadores de docentes y equipos de computo/03_Estudiantes_por_docente_y_equipo_2026.xlsx
+Dimension ICET: Recursos Pedagogicos (20%)
+Periodicidad: Anual (corte 2026)
+Contenido: Ratio estudiantes/docente y estudiantes/equipo de computo por sede.
+Uso principal: Evaluar disponibilidad de recursos pedagogicos.
+
+----------------------------------------------------------------------
+4. INFORMACION GEOGRAFICA DE SEDES
+----------------------------------------------------------------------
+Archivo: data/Fuentes de datos/Informacion geografica sedes.xlsx
+Dimension ICET: Transversal (georreferenciacion)
+Periodicidad: Estatico
+Contenido: Coordenadas, comuna, barrio y ubicacion de sedes educativas oficiales.
+Uso principal: Cruce territorial para analisis por comuna y mapas.
+
+----------------------------------------------------------------------
+5. REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO
+----------------------------------------------------------------------
+Archivo: data/Fuentes de datos/REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO SEDES EDUCATIVAS.xlsx
+Dimension ICET: Dotacion Tecnologica (10%)
+Periodicidad: Corte unico
+Contenido: Inventario detallado de equipos de computo por sede educativa.
+Uso principal: Calcular ratio equipos/estudiantes y disponibilidad tecnologica.
+
+----------------------------------------------------------------------
+6. INTERVENCIONES DE INFRAESTRUCTURA
+----------------------------------------------------------------------
+
+6.1 - 22 Sedes con intervencion
+Archivo: data/Fuentes de datos/Intervenciones de infraestructura/22 SEDES.xlsx
+Dimension ICET: Infraestructura (15%)
+Periodicidad: Corte unico
+Contenido: Listado de 22 sedes educativas con intervencion de infraestructura.
+Uso principal: Identificar sedes intervenidas y tipo de obra.
+
+6.2 - 49 Sedes Emprestito (Valores 2026 y 2027)
+Archivo: data/Fuentes de datos/Intervenciones de infraestructura/49 sedes Emprestito - Valores 2026 y 2027.xlsx
+Dimension ICET: Infraestructura (15%)
+Periodicidad: Proyeccion 2026-2027
+Contenido: Inversiones programadas por emprestito para 49 sedes educativas.
+Uso principal: Medir inversion proyectada y priorizar sedes.
+
+6.3 - Historico de Obras 2020-2025
+Archivo: data/Fuentes de datos/Intervenciones de infraestructura/HISTORICO OBRAS 2020-2025.xlsx
+Dimension ICET: Infraestructura (15%)
+Periodicidad: Serie 2020-2025
+Contenido: Registro historico de obras ejecutadas en sedes educativas.
+Uso principal: Evaluar trayectoria de inversion y sedes con mayor intervencion.
+
+======================================================================
+NOTAS METODOLOGICAS
+======================================================================
+
+- Todas las fuentes provienen de la Secretaria de Educacion Municipal (SED) de Cali.
+- Los datos se analizan con la metodologia ICET (Indice de Calidad Educativa Territorial).
+- La normalizacion usa ref_min/ref_max fijos, NO min-max relativo.
+- Los valores en tablas se presentan con separador de miles (1,234) y en graficos
+  con formato abreviado (1.2K, 3.5M).
+- El analisis de calidad por fuente incluye: nulos, vacios, duplicados, unicos
+  y estadisticas descriptivas.
+- Los resultados detallados se obtienen al ejecutar el notebook:
+  notebooks/01_carga_y_analisis_datos.ipynb
+
+======================================================================
+PROXIMOS PASOS
+======================================================================
+
+1. Ejecutar notebook en Colab para obtener cifras reales por fuente.
+2. Estandarizar nombres de sedes/IE entre fuentes.
+3. Cruzar datos con informacion geografica para analisis territorial.
+4. Calcular indicadores derivados para el ICET.
+5. Normalizar con ref_min/ref_max fijos.
+6. Generar visualizaciones territoriales (mapas por comuna).
