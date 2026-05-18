@@ -37,7 +37,7 @@ La suma de los pesos debe ser `1.0`.
 
 ## 4. Estado real de notebooks
 
-### Notebook principal
+### Notebook 01 - Carga y analisis de datos
 
 - `notebooks/01_carga_y_analisis_datos.ipynb`
 
@@ -50,7 +50,36 @@ Estado:
 - Genera visualizaciones consolidadas: registros por fuente, % nulos, duplicados, heatmap de calidad.
 - Genera resumen consolidado de calidad en tabla.
 - Detecta automaticamente si esta en Colab o local.
-- Pendiente de ejecucion para obtener resultados reales.
+
+### Notebook 02 - Analisis por comuna, correlacion y viabilidad del ICET
+
+- `notebooks/02_analisis_espacial_correlacion.ipynb`
+
+Estado:
+
+- Creado y funcional.
+- Cruza matricula por comuna (22 comunas urbanas) con detalle por sede (337 sedes).
+- Asigna comuna a cada sede usando info geografica (campo EEComCor).
+- Agrega indicadores por comuna: sedes, matricula oficial, equipos, est/equipo.
+- Genera graficos: barras de matricula, composicion sectorial, est/equipo, equipos, sedes.
+- Calcula matriz de correlacion entre indicadores y genera heatmap.
+- Genera scatter plots de relaciones clave.
+- Evalua viabilidad del ICET por comuna.
+
+Hallazgos clave del notebook 02:
+
+- Matricula total urbana 2026: 304,291 estudiantes en 22 comunas.
+- 337 sedes oficiales con datos de equipos de computo.
+- Ratio promedio municipal: 4.88 estudiantes por equipo (meta cumplida a nivel agregado).
+- Comunas con mayor matricula: C13, C14, C21, C15, C18.
+- Comunas con mayor % no oficial: C22, C21, C2.
+
+Viabilidad del ICET:
+
+- 3 de 5 dimensiones son calculables hoy por comuna: Cobertura, Recursos, Dotacion.
+- Eficiencia (repitencia/desercion) solo disponible a nivel municipal.
+- Infraestructura requiere cruce adicional de obras con sedes.
+- Recomendacion: calcular ICET parcial con 3 dimensiones y reponderar pesos.
 
 ## 5. Fuentes de datos disponibles
 
@@ -85,6 +114,7 @@ Para responder bien sobre este repo, un agente debe leer en este orden:
 3. `agent/context/contexto_agente_master.md`
 4. `agent/context/glosario.md`
 5. `notebooks/01_carga_y_analisis_datos.ipynb`
+6. `notebooks/02_analisis_espacial_correlacion.ipynb`
 
 ## 8. Precauciones para otro agente
 
@@ -103,8 +133,8 @@ Para responder bien sobre este repo, un agente debe leer en este orden:
 
 ## 10. Resumen ejecutivo para handoff rapido
 
-Este repo construye el Observatorio de Educacion de Cali. La metodologia usa `ref_min/ref_max` fijos y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook `01_carga_y_analisis_datos.ipynb` carga y analiza las 8 fuentes de datos de la SED. Todas las fuentes estan disponibles en `data/Fuentes de datos/`. El indice ICET tiene 5 dimensiones: Cobertura (30%), Eficiencia (25%), Recursos (20%), Infraestructura (15%) y Dotacion (10%). Distingue siempre entre datos reales y scores calculados. No inventes outputs no generados.
+Este repo construye el Observatorio de Educacion de Cali. La metodologia usa `ref_min/ref_max` fijos y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook 01 carga y analiza las 8 fuentes de datos de la SED. El notebook 02 cruza datos por comuna, calcula correlaciones y evalua la viabilidad del ICET. Hallazgo principal: 3 de 5 dimensiones del ICET son calculables hoy por comuna (Cobertura, Recursos, Dotacion). Eficiencia solo esta a nivel municipal y requiere desglose. Todas las fuentes estan en `data/Fuentes de datos/`. El indice ICET tiene 5 dimensiones: Cobertura (30%), Eficiencia (25%), Recursos (20%), Infraestructura (15%) y Dotacion (10%).
 
 ## 11. Prompt sugerido para otro agente
 
-> Este repo construye el Observatorio de Educacion de Cali. La metodologia vigente exige `ref_min/ref_max` fijos por indicador y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook `notebooks/01_carga_y_analisis_datos.ipynb` carga y analiza 8 fuentes de datos de la SED (matricula, indicadores, docentes, equipos, geografia, infraestructura). El indice ICET usa 5 dimensiones: Cobertura y Acceso (30%), Eficiencia Interna (25%), Recursos Pedagogicos (20%), Infraestructura (15%), Dotacion Tecnologica (10%). Despues de cada cambio haz commit+push y actualiza los .md relacionados. No inventes datos ni outputs.
+> Este repo construye el Observatorio de Educacion de Cali. La metodologia vigente exige `ref_min/ref_max` fijos por indicador y esta documentada en `agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md`. El notebook 01 carga y analiza 8 fuentes de datos de la SED. El notebook 02 cruza datos por comuna (22 comunas, 337 sedes), calcula correlaciones y evalua viabilidad del ICET. Hallazgo: 3 de 5 dimensiones son calculables hoy (Cobertura, Recursos, Dotacion). Eficiencia solo a nivel municipal. El ICET usa 5 dimensiones: Cobertura (30%), Eficiencia (25%), Recursos (20%), Infraestructura (15%), Dotacion (10%). Despues de cada cambio haz commit+push y actualiza los .md y .txt relacionados. No inventes datos ni outputs.

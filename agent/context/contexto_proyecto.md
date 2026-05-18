@@ -37,18 +37,30 @@ El proyecto construye el Indice de Calidad Educativa Territorial (ICET) con 5 di
 ### Matricula 2026
 - Archivo: `data/Fuentes de datos/Reporte de matricula/01_Matricula_2026.xlsx`
 - Periodo: Corte 2026
+- Hojas: Por sector, Por nivel, Por comuna, Por sexo, Comuna x sector x nivel x sexo, Notas tecnicas
+- Datos clave: 304,291 estudiantes totales, 143,747 oficiales, 159,469 no oficiales
+- Desglose por comuna: 22 comunas urbanas + 16 corregimientos
+- Desglose por nivel: Prejardin, Transicion, Primaria, Secundaria, Media, Aceleracion, Adultos, PFC
 
 ### Indicadores de eficiencia y cobertura 2026
 - Archivo: `data/Fuentes de datos/Indicadores de eficiencia y de cobertura/02_Indicadores_2026.xlsx`
 - Periodo: Corte 2026
+- Hojas: Repitencia por sector, Repitencia por nivel, Cobertura bruta, Cobertura neta, Notas tecnicas
+- Datos clave: Tasa repitencia municipal 6.82%, Cobertura bruta 75.78%, Cobertura neta 68.87%
+- Limitacion: Solo nivel municipal, NO desglose por comuna
 
 ### Estudiantes por docente y equipo 2026
 - Archivo: `data/Fuentes de datos/Indicadores de docentes y equipos de computo/03_Estudiantes_por_docente_y_equipo_2026.xlsx`
 - Periodo: Corte 2026
+- Hojas: Resumen municipio, Detalle por sede (337 sedes), Nota tecnica
+- Datos clave: 24.64 est/docente, 4.88 est/equipo, 5,835 docentes, 29,432 equipos
+- Desglose: Por sede (cod_dane_sede, nombre, matricula, equipos, ratio)
 
 ### Informacion geografica de sedes
 - Archivo: `data/Fuentes de datos/Informacion geografica sedes.xlsx`
-- Contenido: Coordenadas y ubicacion de sedes educativas oficiales
+- Contenido: 356 sedes con codigo DANE, nombre IE, sede, comuna/corregimiento (EEComCor), barrio, geometria
+- Campo clave para cruce: EeCodDane (codigo DANE de sede), EEComCor (numero de comuna)
+- CRS: MAGNA-SIRGAS (coordenadas proyectadas)
 
 ### Inventario de equipos de computo
 - Archivo: `data/Fuentes de datos/REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO SEDES EDUCATIVAS.xlsx`

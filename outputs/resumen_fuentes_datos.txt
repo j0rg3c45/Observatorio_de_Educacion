@@ -12,8 +12,18 @@ Equipo: ITT Cali Inteligente - Gobierno de Datos
 Archivo: data/Fuentes de datos/Reporte de matricula/01_Matricula_2026.xlsx
 Dimension ICET: Cobertura y Acceso (30%)
 Periodicidad: Anual (corte 2026)
-Contenido: Matricula por sede educativa, nivel, grado y jornada.
-Uso principal: Calcular tasas de cobertura bruta y neta por sede/comuna.
+Hojas: Por sector, Por nivel, Por comuna, Por sexo, Cruce completo, Notas
+Contenido: Matricula por sector, nivel, comuna y sexo.
+Cifras clave:
+  - Total municipio: 304,291 estudiantes
+  - Oficial: 143,747 (47.3%)
+  - No oficial: 159,469 (52.4%)
+  - SGP Defensa: 1,075 (0.4%)
+  - Comunas urbanas: 22
+  - Corregimientos: 16
+  - Comunas con mayor matricula: C14 (25,902), C21 (23,489), C13 (22,107)
+  - Comunas con menor matricula: C22 (18,861 pero 99% no oficial), C17 (5,422)
+Uso principal: Calcular cobertura por comuna y composicion sectorial.
 
 ----------------------------------------------------------------------
 2. INDICADORES DE EFICIENCIA Y COBERTURA 2026
@@ -21,26 +31,47 @@ Uso principal: Calcular tasas de cobertura bruta y neta por sede/comuna.
 Archivo: data/Fuentes de datos/Indicadores de eficiencia y de cobertura/02_Indicadores_2026.xlsx
 Dimension ICET: Eficiencia Interna (25%) + Cobertura y Acceso (30%)
 Periodicidad: Anual (corte 2026)
-Contenido: Tasas de desercion, repitencia, aprobacion, reprobacion y cobertura.
-Uso principal: Medir eficiencia del sistema educativo por sede/IE.
+Hojas: Repitencia por sector, Repitencia por nivel, Cobertura bruta, Cobertura neta, Notas
+Cifras clave:
+  - Tasa de repitencia municipal: 6.82%
+  - Repitencia oficial: 9.47%
+  - Repitencia no oficial: 4.35%
+  - Cobertura bruta total: 75.78%
+  - Cobertura neta total: 68.87%
+  - Nivel con mayor repitencia: Aceleracion (36.99%), Secundaria (9.47%)
+  - Cobertura bruta mas baja: Transicion (61.06%), Media (61.86%)
+Limitacion: Solo nivel municipal, NO hay desglose por comuna.
+Uso principal: Referente municipal de eficiencia. Requiere desglose para ICET por comuna.
 
 ----------------------------------------------------------------------
 3. ESTUDIANTES POR DOCENTE Y EQUIPO DE COMPUTO 2026
 ----------------------------------------------------------------------
 Archivo: data/Fuentes de datos/Indicadores de docentes y equipos de computo/03_Estudiantes_por_docente_y_equipo_2026.xlsx
-Dimension ICET: Recursos Pedagogicos (20%)
+Dimension ICET: Recursos Pedagogicos (20%) + Dotacion Tecnologica (10%)
 Periodicidad: Anual (corte 2026)
-Contenido: Ratio estudiantes/docente y estudiantes/equipo de computo por sede.
-Uso principal: Evaluar disponibilidad de recursos pedagogicos.
+Hojas: Resumen municipio, Detalle por sede (337 sedes), Nota tecnica
+Cifras clave:
+  - Matricula oficial: 143,747
+  - Docentes oficial: 5,835
+  - Estudiantes por docente: 24.64
+  - Equipos de computo: 29,432 en 337 sedes
+  - Estudiantes por equipo: 4.88 (promedio municipal)
+  - Rango est/equipo por sede: 0.15 a 112.0
+  - Mediana est/equipo: 6.52
+  - Sedes con ratio > 10: requieren atencion
+Uso principal: Indicador clave para Recursos y Dotacion. Agregable a comuna.
 
 ----------------------------------------------------------------------
 4. INFORMACION GEOGRAFICA DE SEDES
 ----------------------------------------------------------------------
 Archivo: data/Fuentes de datos/Informacion geografica sedes.xlsx
 Dimension ICET: Transversal (georreferenciacion)
-Periodicidad: Estatico
-Contenido: Coordenadas, comuna, barrio y ubicacion de sedes educativas oficiales.
-Uso principal: Cruce territorial para analisis por comuna y mapas.
+Periodicidad: Estatico (actualizado 2023)
+Registros: 356 sedes
+Campos clave: EeCodDane, EeNomIns, EeNomSede, EEComCor (comuna), EEBarVer (barrio), geometry
+CRS: MAGNA-SIRGAS (coordenadas proyectadas)
+Uso principal: Asignar comuna a cada sede para analisis territorial.
+Cruce exitoso: ~95% de sedes del archivo 03 se cruzan con info geografica.
 
 ----------------------------------------------------------------------
 5. REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO
@@ -49,7 +80,7 @@ Archivo: data/Fuentes de datos/REPORTE DE INVENTARIO DE EQUIPOS DE COMPUTO SEDES
 Dimension ICET: Dotacion Tecnologica (10%)
 Periodicidad: Corte unico
 Contenido: Inventario detallado de equipos de computo por sede educativa.
-Uso principal: Calcular ratio equipos/estudiantes y disponibilidad tecnologica.
+Uso principal: Complementar datos de equipos del archivo 03.
 
 ----------------------------------------------------------------------
 6. INTERVENCIONES DE INFRAESTRUCTURA
@@ -58,45 +89,72 @@ Uso principal: Calcular ratio equipos/estudiantes y disponibilidad tecnologica.
 6.1 - 22 Sedes con intervencion
 Archivo: data/Fuentes de datos/Intervenciones de infraestructura/22 SEDES.xlsx
 Dimension ICET: Infraestructura (15%)
-Periodicidad: Corte unico
-Contenido: Listado de 22 sedes educativas con intervencion de infraestructura.
-Uso principal: Identificar sedes intervenidas y tipo de obra.
+Contenido: 22 sedes educativas con intervencion de infraestructura.
 
 6.2 - 49 Sedes Emprestito (Valores 2026 y 2027)
 Archivo: data/Fuentes de datos/Intervenciones de infraestructura/49 sedes Emprestito - Valores 2026 y 2027.xlsx
 Dimension ICET: Infraestructura (15%)
-Periodicidad: Proyeccion 2026-2027
-Contenido: Inversiones programadas por emprestito para 49 sedes educativas.
-Uso principal: Medir inversion proyectada y priorizar sedes.
+Contenido: Inversiones programadas por emprestito para 49 sedes.
 
 6.3 - Historico de Obras 2020-2025
 Archivo: data/Fuentes de datos/Intervenciones de infraestructura/HISTORICO OBRAS 2020-2025.xlsx
 Dimension ICET: Infraestructura (15%)
-Periodicidad: Serie 2020-2025
 Contenido: Registro historico de obras ejecutadas en sedes educativas.
-Uso principal: Evaluar trayectoria de inversion y sedes con mayor intervencion.
+
+======================================================================
+HALLAZGOS DEL ANALISIS DE CORRELACION (Notebook 02)
+======================================================================
+
+Cruce realizado: Matricula por comuna + Detalle por sede + Info geografica
+Resultado: Tabla consolidada de 22 comunas con indicadores educativos.
+
+Indicadores por comuna disponibles:
+  - Matricula total (oficial + no oficial)
+  - Matricula oficial
+  - % sector oficial
+  - Sedes oficiales
+  - Equipos de computo totales
+  - Estudiantes por equipo (promedio y mediana)
+
+Correlaciones relevantes encontradas:
+  - Matricula total vs Equipos: correlacion positiva fuerte
+  - Sedes vs Matricula oficial: correlacion positiva fuerte
+  - % Oficial vs Est/equipo: relacion a explorar
+
+======================================================================
+VIABILIDAD DEL ICET POR COMUNA
+======================================================================
+
+| Dimension          | Peso | Calculable hoy | Fuente                    |
+|--------------------|------|----------------|---------------------------|
+| Cobertura y Acceso | 30%  | SI (proxy)     | Matricula por comuna      |
+| Eficiencia Interna | 25%  | NO             | Solo nivel municipal      |
+| Recursos Pedag.    | 20%  | SI             | Est/equipo por sede       |
+| Infraestructura    | 15%  | PARCIAL        | Requiere cruce obras-sede |
+| Dotacion Tecnol.   | 10%  | SI             | Equipos por sede          |
+
+Conclusion: ICET parcial VIABLE con 3 dimensiones (60% del peso total).
+Recomendacion: Calcular con pesos reponderados y agregar dimensiones faltantes
+cuando se consiga desglose por comuna.
 
 ======================================================================
 NOTAS METODOLOGICAS
 ======================================================================
 
 - Todas las fuentes provienen de la Secretaria de Educacion Municipal (SED) de Cali.
-- Los datos se analizan con la metodologia ICET (Indice de Calidad Educativa Territorial).
+- Fuente SIMAT: Anexo 6a y 5a Marzo 2026.
 - La normalizacion usa ref_min/ref_max fijos, NO min-max relativo.
-- Los valores en tablas se presentan con separador de miles (1,234) y en graficos
-  con formato abreviado (1.2K, 3.5M).
-- El analisis de calidad por fuente incluye: nulos, vacios, duplicados, unicos
-  y estadisticas descriptivas.
-- Los resultados detallados se obtienen al ejecutar el notebook:
-  notebooks/01_carga_y_analisis_datos.ipynb
+- Los valores en tablas se presentan con separador de miles (1,234).
+- En graficos se usa formato abreviado (1.2K, 3.5M).
+- El cruce territorial usa el campo EEComCor de la info geografica.
 
 ======================================================================
 PROXIMOS PASOS
 ======================================================================
 
-1. Ejecutar notebook en Colab para obtener cifras reales por fuente.
-2. Estandarizar nombres de sedes/IE entre fuentes.
-3. Cruzar datos con informacion geografica para analisis territorial.
-4. Calcular indicadores derivados para el ICET.
-5. Normalizar con ref_min/ref_max fijos.
-6. Generar visualizaciones territoriales (mapas por comuna).
+1. Calcular ICET parcial por comuna con las 3 dimensiones disponibles.
+2. Buscar desglose de repitencia/desercion por sede o comuna en SIMAT.
+3. Cruzar intervenciones de infraestructura con sedes por comuna.
+4. Obtener poblacion por comuna en edad escolar (DANE) para cobertura real.
+5. Generar mapas coropleticos por comuna con los indicadores.
+6. Normalizar indicadores con ref_min/ref_max fijos.
