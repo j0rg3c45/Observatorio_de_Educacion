@@ -3,7 +3,7 @@ Genera el GeoJSON con scores de la dimension Educacion por comuna.
 Ejecutar en Colab o local para obtener el archivo descargable.
 
 Uso:
-    python scripts/generar_geojson_educacion.py
+    uv run scripts/generar_geojson_educacion.py
 """
 import os
 import sys
