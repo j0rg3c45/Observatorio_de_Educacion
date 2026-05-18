@@ -26,3 +26,7 @@ Reglas:
    Usar `uv run` o `python` directamente para ejecutar scripts.
 10. Ayuda a verificar el codigo que este acorde a la metodologia ICET documentada en
     agent/knowledge_base/Guia_ITT_Metodologia_Notebook.md
+11. Ademas de tablas y reportes, SIEMPRE generar graficos sencillos y faciles de entender.
+    Usar matplotlib + seaborn con paleta Set2 y estilo whitegrid.
+    Tipos preferidos: barras horizontales, tortas, histogramas, heatmaps.
+    Incluir etiquetas de valor en barras para facilitar la lectura.

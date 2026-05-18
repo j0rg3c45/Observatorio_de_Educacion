@@ -29,6 +29,13 @@
 - Formato abreviado en ejes de graficos (1K, 1M, 1B)
 - Reportes de texto plano (.txt) en outputs/
 - Exportacion de graficos (.png) en outputs/
+- Graficos sencillos y faciles de entender en cada notebook:
+  - Barras horizontales para comparar cantidades
+  - Tortas para distribuciones porcentuales
+  - Histogramas para variables numericas
+  - Heatmaps para matrices de calidad
+  - Paleta: Set2 (seaborn), estilo: whitegrid
+  - Etiquetas de valor en barras para facilitar lectura
 
 ## Git - Regla obligatoria
 

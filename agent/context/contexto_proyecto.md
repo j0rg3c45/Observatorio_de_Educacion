@@ -81,3 +81,10 @@ El proyecto construye el Indice de Calidad Educativa Territorial (ICET) con 5 di
 7. Sin emojis en codigo.
 8. Formato abreviado en ejes (1K, 1M, 1B).
 9. Reportes en texto plano (.txt) en outputs/.
+10. Ademas de tablas y reportes, SIEMPRE generar graficos sencillos y faciles de entender:
+    - Barras horizontales para comparar cantidades entre categorias.
+    - Tortas para distribuciones porcentuales simples.
+    - Histogramas para distribuciones de variables numericas.
+    - Heatmaps para matrices de calidad o correlacion.
+    - Usar paleta Set2 de seaborn y estilo limpio (whitegrid).
+    - Incluir etiquetas de valor en las barras para facilitar lectura.
