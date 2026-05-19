@@ -1,0 +1,135 @@
+======================================================================
+PLANTILLA DE SOLICITUD DE DATOS - LINEA BASE EDUCATIVA
+======================================================================
+Proyecto: Observatorio de Educacion - Santiago de Cali
+Equipo: ITT Cali Inteligente - Gobierno de Datos
+Fecha: Mayo 2026
+======================================================================
+
+OBJETIVO:
+Construir una linea base historica (2020-2025) con la misma estructura
+que los datos 2026, para calcular indicadores de la dimension Educacion
+del ITT con evolucion temporal y analisis espacial.
+
+======================================================================
+ESTRUCTURA SOLICITADA (un archivo por ano)
+======================================================================
+
+Archivos requeridos:
+  - linea_base_educacion_2020.xlsx
+  - linea_base_educacion_2021.xlsx
+  - linea_base_educacion_2022.xlsx
+  - linea_base_educacion_2023.xlsx
+  - linea_base_educacion_2024.xlsx
+  - linea_base_educacion_2025.xlsx
+
+Columnas requeridas por archivo:
+
+| # | Campo              | Tipo     | Descripcion                              | Ejemplo              |
+|---|--------------------| ---------|------------------------------------------|----------------------|
+| 1 | codigo_dane_sede   | texto    | Codigo DANE unico de la sede             | 176001005813         |
+| 2 | nombre_sede        | texto    | Nombre oficial de la sede                | VILLA DEL MAR        |
+| 3 | nombre_ie          | texto    | Nombre de la Institucion Educativa       | IE JOSE HOLGUIN      |
+| 4 | comuna             | entero   | Numero de comuna (1-22) o corregimiento  | 9                    |
+| 5 | barrio             | texto    | Nombre del barrio                        | OBRERO               |
+| 6 | matricula          | entero   | Estudiantes matriculados en la sede      | 1032                 |
+| 7 | equipos            | entero   | Equipos de computo funcionales           | 513                  |
+| 8 | docentes           | entero   | Docentes asignados a la sede             | 42                   |
+| 9 | coord_x            | decimal  | Coordenada X (longitud o Este)           | -76.5320 o 1066557   |
+| 10| coord_y            | decimal  | Coordenada Y (latitud o Norte)           | 3.4516 o 858049      |
+| 11| crs                | texto    | Sistema de referencia de coordenadas     | EPSG:4326 o EPSG:3115|
+| 12| fecha_corte        | fecha    | Fecha del corte de informacion           | 2023-03-01           |
+| 13| sector             | texto    | Oficial / No oficial / SGP Defensa       | Oficial              |
+
+======================================================================
+NOTAS TECNICAS
+======================================================================
+
+1. COORDENADAS:
+   - Preferible en EPSG:4326 (WGS84): longitud (X) y latitud (Y)
+   - Si estan en MAGNA-SIRGAS (EPSG:3115 o 9377): indicar en campo "crs"
+   - Las coordenadas permiten generar mapas y analisis espacial
+   - Si no hay coordenadas por ano, usar las del archivo de info geografica
+     actual (asumiendo que la sede no se movio)
+
+2. MATRICULA:
+   - Corte de Marzo de cada ano (SIMAT Anexo 6a para oficial)
+   - Si hay corte de otro mes, indicar en fecha_corte
+   - Solo sector oficial si no hay datos de no oficial
+
+3. EQUIPOS:
+   - Equipos de computo funcionales (no incluir danados o de baja)
+   - Si no hay inventario historico, dejar en blanco (no inventar)
+   - El dato 2026 viene del archivo "REPORTE DE INVENTARIO DE EQUIPOS"
+
+4. DOCENTES:
+   - Total docentes asignados a la sede (planta + provisional)
+   - Si no hay dato por sede, dejar en blanco
+   - El dato 2026 solo existe a nivel municipal (5,835 total)
+
+5. FECHA_CORTE:
+   - Formato: YYYY-MM-DD (ej: 2023-03-01)
+   - Permite comparar el mismo mes entre anos
+   - Si es corte anual sin mes especifico, usar YYYY-01-01
+
+======================================================================
+INDICADORES QUE SE CALCULAN CON ESTOS DATOS
+======================================================================
+
+Con la estructura completa se pueden calcular por sede, comuna y ano:
+
+| Indicador                | Formula                          | Meta        |
+|--------------------------|----------------------------------|-------------|
+| Estudiantes por equipo   | matricula / equipos              | <= 5        |
+| Estudiantes por docente  | matricula / docentes             | <= 25       |
+| Deficit de equipos       | (matricula / 5) - equipos        | <= 0        |
+| Deficit de docentes      | (matricula / 25) - docentes      | <= 0        |
+| Concentracion matricula  | matricula_comuna / total * 100   | -           |
+| Cobertura intervencion   | sedes_con_obra / sedes_total     | 100%        |
+| Variacion matricula      | (mat_actual - mat_anterior) / mat_anterior * 100 | > 0% |
+| Score educacion (ICET)   | Normalizacion ref_min/ref_max    | > 60        |
+
+======================================================================
+FUENTES SUGERIDAS PARA OBTENER LOS DATOS
+======================================================================
+
+| Dato          | Fuente                                    | Responsable          |
+|---------------|-------------------------------------------|----------------------|
+| Matricula     | SIMAT Anexo 6a (oficial) y 5a (no oficial)| SED - Cobertura      |
+| Equipos       | Inventario TIC de sedes educativas        | SED - TIC            |
+| Docentes      | Planta docente (Humano Talento)           | SED - Talento Humano |
+| Coordenadas   | Info geografica de sedes (IDESC)          | SED - Planeacion     |
+| Comuna/barrio | Asignacion territorial IDESC              | SED - Planeacion     |
+
+======================================================================
+PRIORIDAD DE SOLICITUD
+======================================================================
+
+Si no es posible obtener todos los campos, priorizar en este orden:
+
+1. codigo_dane_sede + matricula + comuna + fecha_corte (MINIMO)
+2. + equipos (permite calcular deficit y ratio)
+3. + coord_x + coord_y (permite mapas)
+4. + docentes (permite ratio est/docente por sede)
+5. + barrio + sector (permite analisis mas granular)
+
+Con solo los campos 1 y 2 ya se puede construir la evolucion temporal
+del indicador mas relevante (est/equipo) por comuna.
+
+======================================================================
+EJEMPLO DE REGISTRO
+======================================================================
+
+codigo_dane_sede: 176001005813
+nombre_sede: INEM JORGE ISAACS
+nombre_ie: INSTITUCION EDUCATIVA INEM JORGE ISAACS
+comuna: 19
+barrio: SANTA ANITA
+matricula: 2299
+equipos: 175
+docentes: 95
+coord_x: -76.5412
+coord_y: 3.4287
+crs: EPSG:4326
+fecha_corte: 2023-03-01
+sector: Oficial
